@@ -1,0 +1,23 @@
+{
+   "name": "server",
+   "version": "1.0.0",
+   "description": "",
+   "main": "app.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon app.js"
+   },
+   "author": "",
+   "license": "ISC",
+   "devDependencies": {
+      "express": "^4.16.4",
+      "http": "0.0.0",
+      "nodemon": "^1.18.9"
+   },
+   "dependencies": {
+      "cors": "^2.8.5",
+      "express-fileupload": "^1.1.1-alpha.1",
+      "npm": "^6.7.0",
+      "xml2js": "^0.4.19"
+   }
+}

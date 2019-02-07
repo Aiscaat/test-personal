@@ -1,0 +1,57 @@
+<button (click)="sort('lName')" class="sort">
+  Сортировка по фамилиям
+</button>
+<button (click)="sort('date')" class="sort">
+  Сортировка по дате
+</button>
+<button (click)="sort('reset')" class="sort">
+  Сортировка reset
+</button>
+<!-- <div class="new__user">
+  Add new user
+  <input (change)="fileChangeEvent($event)" type="file" accept=".txt">
+  <button (click)="upload()">ok</button>
+</div> -->
+
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td><span>Id</span></td>
+      <td><span>ФИО</span></td>
+      <td><span>Дата Рождения:</span></td>
+      <td><span>Принят на работу</span></td>
+      <td><span>Тип</span></td>
+      <td><span>Описание</span></td>
+    </tr>
+    <tr *ngFor="let user of getUsers()">
+      <td><span>{{user.id}}</span></td>
+      <td><span>{{user.first_name}} {{user.last_name}} {{user.father_name}}</span></td>
+      <td><span style="text-align: right">{{user.b_day_date}}</span></td>
+      <td><span style="text-align: right">{{user.work_start_date}}</span></td>
+      <td><span>{{user.role}}</span></td>
+      <td><span>{{user.description}}</span></td>
+      <td><button (click)="changeRoleFunc(user)">Edit Role</button></td>
+      <td><button (click)="delete(user.id)">Delete</button></td>
+      <!-- <td *ngIf="user.role == 'workman'">
+        <button (click)="managerChangeFunc(user.id)">Connect to manager</button>
+      </td> -->
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="changeRole" class="modal">
+  Введите тип сотрудника
+  <br />
+  <input class="modal__input" type="text" [(ngModel)]="personRole">
+  <button class="modal__send" (click)="changeRoleFunc()">OK</button>
+</div>
+
+<!-- <div *ngIf="managerConnect" class="modal">
+  Выберите менеджера
+  <br />
+  <select [(ngModel)]="newManager" class="modal__select">
+    <option *ngFor="let manager of getManagers()">{{user.first_name}} {{user.last_name}}</option>
+  </select>
+  <button class="modal__send" (click)="managerChangeFunc()">OK</button>
+</div> -->
