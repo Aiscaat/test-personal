@@ -14,5 +14,5 @@ module.exports = (app) => {
    app.get('/users/sort/:type', personalCtrls.sort);
 
    // add new user
-   // app.post('/users/addUser', personalCtrls.addNewUser);
+   app.post('/users/addUser', personalCtrls.addNewUser);
 }

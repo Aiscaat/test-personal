@@ -34,7 +34,13 @@ export class UserService {
       this.httpService.sort(type).subscribe(data => {
          this.users = data;
       })
-      
+
       return this.users;
+   }
+
+   addNewUser(user: User) {
+      this.httpService.addNewUser(user).subscribe(data => {
+         this.users = data;
+      })
    }
 }

@@ -1,10 +1,10 @@
 const fs = require('fs');
 const xml2js = require('xml2js');
 
+const consts = require("./../const.config")
+
 const parser = new xml2js.Parser();
 const builder = new xml2js.Builder();
-
-const filePath = `${__dirname}../../personal.xml`;
 
 exports.getAllPersonal = (req, res) => {
    readFile((result) => {
@@ -39,6 +39,19 @@ exports.changeUserRole = (req, res) => {
    res.end();
 }
 
+exports.addNewUser = (req, res) => {
+   readFile((result) => {
+      let users = result.personal.user,
+         id = users.length + 1,
+         newObject = Object.assign({ id: id }, req.body);
+
+      users.push(newObject);
+
+      rewriteFile(result);
+      res.json(users);
+   });
+}
+
 exports.sort = (req, res) => {
    let sortRes = null;
 
@@ -59,20 +72,6 @@ exports.sort = (req, res) => {
       sortRes = null;
    })
 }
-
-// exports.addNewUser = (req, res) => {
-//    if (Object.keys(req.files).length == 0)
-//       return res.status(400).send('No files were uploaded.');
-
-//    let file = req.files["uploads[]"];
-
-//    file.mv(`${__dirname}../../${file.name}`, function (err) {
-//       if (err) return res.status(500).send(err);
-//       addNewUserProces(file.name);
-//    });
-
-//    res.json();
-// }
 
 function lNameSort(result) {
    innerSort(result.personal.user, 'last_name');
@@ -118,7 +117,7 @@ function innerSort(arr, prop, propHandler) {
 }
 
 function readFile(func) {
-   fs.readFile(filePath, 'utf-8', (err, data) => {
+   fs.readFile(consts.PERSONAL_XML_FILE_URL, 'utf-8', (err, data) => {
       if (err) console.error(err);
 
       parser.parseString(data, (err, result) => {
@@ -131,33 +130,3 @@ function readFile(func) {
 function rewriteFile(result) {
    fs.writeFile('personal.xml', builder.buildObject(result), 'utf-8', () => { })
 }
-
-// function addNewUserProces(filename) {
-//    fs.readFile(`${__dirname}../../${filename}`, 'utf-8', (err, data) => {
-//       if (err) console.error(err);
-
-//       let props = ['FIO', 'BDay', 'WorkStartDate', 'Role', 'Dependents', 'Description'];
-//       let index;
-//       let newUser = {};
-
-//       props.forEach(item => {
-//          index = data.findIndex(`${item}: `);
-//          if (index !== -1) {
-//             switch (item) {
-//                case 'FIO':
-//                   _addNewUserSwitch('first_name');
-//                   break;
-            
-//                default:
-//                   break;
-//             }
-//          }
-//       })
-
-//       function _addNewUserSwitch(prop) {
-//          newUser[prop]
-//       }
-
-//       console.log(data);
-//    });
-// }

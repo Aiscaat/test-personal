@@ -8,25 +8,29 @@ const PORT = 3200;
 
 @Injectable()
 export class HttpService {
-  baseUrl: string;
+   baseUrl: string;
 
-  constructor(private http: HttpClient) {
-    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
-  }
+   constructor(private http: HttpClient) {
+      this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+   }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}users`)
-  }
+   getUsers(): Observable<User[]> {
+      return this.http.get<User[]>(`${this.baseUrl}users`)
+   }
 
-  deleteUser(id: number): Observable<User> {
-    return this.http.delete<User>(`${this.baseUrl}users/${id}`);
-  }
+   deleteUser(id: number): Observable<User> {
+      return this.http.delete<User>(`${this.baseUrl}users/${id}`);
+   }
 
-  editUserRole(id: number, role: string): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}users/${id}`, {role: role});
-  }
+   editUserRole(id: number, role: string): Observable<User> {
+      return this.http.put<User>(`${this.baseUrl}users/${id}`, { role: role });
+   }
 
-  sort(type): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}users/sort/${type}`);
-  }
+   sort(type): Observable<User[]> {
+      return this.http.get<User[]>(`${this.baseUrl}users/sort/${type}`);
+   }
+
+   addNewUser(user: User): Observable<User[]> {
+      return this.http.post<User[]>(`${this.baseUrl}users/addUser`, user);
+   }
 }

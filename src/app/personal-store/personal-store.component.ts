@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { User } from '../model/user.model';
 
@@ -58,18 +58,40 @@ export class PersonalStoreComponent {
       return this.userService.sort(type);
    }
 
-   // file to new user not work
    public file: any = null;
    fileChangeEvent(e) {
       this.file = e.target.files[0];
    }
 
    upload() {
-      if (this.file === null) return
+      if (this.file === null) return false;
+
       let fileReader = new FileReader();
 
-      fileReader.onloadend = (e) => {
-         let text = fileReader.result.toString();                  
+      fileReader.onloadend = () => {
+         let text = fileReader.result.toString().split('\n'),
+            newUser = {
+               first_name: null,
+               last_name: null,
+               father_name: null,
+               b_day_date: null,
+               work_start_date: null,
+               role: null,
+               dependentList: null,
+               description: null
+            };
+
+         Object.keys(newUser).forEach((_key, index) => {
+            text[index] = text[index].replace('\r', ''); // only for .txt file
+
+            if (text[index] == "-") {
+               delete newUser[_key];
+            }
+            else newUser[_key] = text[index];
+         })
+
+         this.userService.addNewUser(newUser);
+
       }
       fileReader.readAsText(this.file);
    }

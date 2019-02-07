@@ -22,4 +22,16 @@ table
       margin-left: 10px
 
 .new__user
-   display: inline
+   display: inline-flex
+   flex-direction: column
+   & > input
+      margin-bottom: 8px
+   & > label
+      display: flex
+      & > span
+         width: 115px
+         text-align: center
+         color: blue
+      & > button
+         margin: 0 auto
+         display: block
