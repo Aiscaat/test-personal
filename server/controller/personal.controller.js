@@ -52,6 +52,56 @@ exports.addNewUser = (req, res) => {
    });
 }
 
+exports.changeManager = (req, res) => {
+   if (req.body.oldManagerId === req.params.id) res.end();
+
+   let
+      oldManagerId = req.body.oldManagerId,
+      newManagerId = req.params.id,
+      dependentId = req.body.dependentId[0];
+
+   let actions = { addId: false, removeId: false }
+
+   let responseResult = {};
+
+   readFile((result) => {
+      let currElId;
+
+      for (let el of result.personal.user) {
+         currElId = parseInt(el.id[0]);
+
+         // find current user (for return on client)
+         if (currElId == dependentId) {
+            el.manager_dependence[0] = newManagerId;
+            responseResult['user'] = el;
+         }
+
+         // find old manager and delete from his dependentList current user
+         if (currElId == oldManagerId) {
+            let dependentArr = el.dependentList[0].split(',');
+            dependentArr.splice(dependentArr.findIndex(i => i == dependentId), 1);
+            el.dependentList[0] = dependentArr.join(",");
+
+            responseResult['oldManager'] = el;
+
+            if (actions.addId) break;
+         }
+
+         // find new manager and add to his dependentList current user
+         if (currElId == newManagerId) {
+            el.dependentList[0] += `,${dependentId}`;
+
+            responseResult['newManager'] = el;
+
+            if (actions.removeId) break;
+         }
+      }
+
+      rewriteFile(result);
+      res.json(responseResult);
+   })
+}
+
 exports.sort = (req, res) => {
    let sortRes = null;
 
@@ -73,6 +123,10 @@ exports.sort = (req, res) => {
    })
 }
 
+exports.getXmlFile = (req, res) => res.sendFile(consts.PERSONAL_XML_FILE_URL);
+
+
+// next 3 func more better U in 1 module sort
 function lNameSort(result) {
    innerSort(result.personal.user, 'last_name');
 

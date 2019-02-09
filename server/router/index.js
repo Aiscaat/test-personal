@@ -1,5 +1,6 @@
+var personalCtrls = require('../controller/personal.controller');
+
 module.exports = (app) => {
-   var personalCtrls = require('./controller/personal.controller');
 
    // get all personal
    app.get('/users', personalCtrls.getAllPersonal);
@@ -15,4 +16,10 @@ module.exports = (app) => {
 
    // add new user
    app.post('/users/addUser', personalCtrls.addNewUser);
+
+   // change manager for user
+   app.put('/users/changeManager/:id', personalCtrls.changeManager);
+
+   // get person xml file
+   app.get('/xml/get/person', personalCtrls.getXmlFile)
 }

@@ -33,4 +33,12 @@ export class HttpService {
    addNewUser(user: User): Observable<User[]> {
       return this.http.post<User[]>(`${this.baseUrl}users/addUser`, user);
    }
+
+   managerChange(id: number, dependentId: number, oldManagerId: number): Observable<Object> {
+      return this.http.put<Object>(`${this.baseUrl}users/changeManager/${id}`, { dependentId, oldManagerId });
+   }
+
+   getXmlFile() {
+      return this.http.get(`${this.baseUrl}xml/get/person`, { observe: 'response', responseType: 'blob' });
+   }
 }

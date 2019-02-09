@@ -3,13 +3,12 @@ const http = require('http').Server(app);
 var bodyParser = require('body-parser');
 const cors = require('cors');
 
-
 app.use(cors());
 app.use(bodyParser.json());
 
-require('./routes.js')(app);
+require('./router/index')(app);
 
-app.get('/', (res) => {
+app.get('/', (req, res) => {
    res.send('Server is work');
 })
 

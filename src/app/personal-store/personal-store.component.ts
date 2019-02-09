@@ -13,8 +13,14 @@ export class PersonalStoreComponent {
    public changeRole: boolean = false;
 
    public managerConnect: boolean = false;
-   public managerSelect: User = {};
-   public newManager: any = null;
+   public userId: number;
+   public oldManagerId: string;
+   public newManagerId: string = null;
+   public newManager: User = null;
+
+   public managers: User[] = [];
+
+   public file: any = null;
 
    constructor(private userService: UserService) { }
 
@@ -22,12 +28,11 @@ export class PersonalStoreComponent {
       return this.userService.getUsers();
    }
 
-   // getManagers() {
-   //    return this.userService.getUsers().filter(m => {
-   //       console.log(m.role[0]);
-   //       m.role[0] == "manager";
-   //    });
-   // }
+   getManagers() {
+      this.managers = this.userService.getUsers()
+         .filter(m => m.role[0] == "manager");
+      return this.managers;
+   }
 
    changeRoleFunc(user?: User) {
       if (user)
@@ -40,25 +45,28 @@ export class PersonalStoreComponent {
       this.changeRole = !this.changeRole;
    }
 
-   // not all logic in function
    managerChangeFunc(id?: number) {
-      if (id)
-         this.managerSelect = this.userService.getUsers().filter(m => { m.id == id })[0];
-      else if (this.newManager !== null) {
-
+      if (id) {
+         this.userId = id;
+         this.oldManagerId = this.getUsers().find(u => u.id == id).manager_dependence[0];
       }
+      else if (this.newManagerId !== "" && this.newManagerId !== this.oldManagerId) {
+         this.newManager = this.managers.find(m => m.id == parseInt(this.newManagerId));
+         this.userService.managerChange(this.newManager, this.userId, parseInt(this.oldManagerId));
+      }
+
       this.managerConnect = !this.managerConnect;
+      this.newManagerId = null;
    }
 
    delete(id: number) {
       this.userService.deleteUser(id);
    }
 
-   sort(type) {
+   sort(type: string) {
       return this.userService.sort(type);
    }
 
-   public file: any = null;
    fileChangeEvent(e) {
       this.file = e.target.files[0];
    }
@@ -77,6 +85,7 @@ export class PersonalStoreComponent {
                b_day_date: null,
                work_start_date: null,
                role: null,
+               manager_dependence: null,
                dependentList: null,
                description: null
             };
@@ -84,15 +93,16 @@ export class PersonalStoreComponent {
          Object.keys(newUser).forEach((_key, index) => {
             text[index] = text[index].replace('\r', ''); // only for .txt file
 
-            if (text[index] == "-") {
-               delete newUser[_key];
-            }
+            if (text[index] == "-") delete newUser[_key];
             else newUser[_key] = text[index];
          })
 
          this.userService.addNewUser(newUser);
-
       }
       fileReader.readAsText(this.file);
+   }
+
+   workXML() {
+      this.userService.getXmlFile();
    }
 }

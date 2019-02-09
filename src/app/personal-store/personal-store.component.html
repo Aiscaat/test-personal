@@ -1,3 +1,6 @@
+<button (click)="workXML()">
+  Create & save xml file
+</button>
 <button (click)="sort('lName')" class="sort">
   Сортировка по фамилиям
 </button>
@@ -14,6 +17,8 @@
     <button (click)="upload()">ok</button>
   </label>
 </div>
+
+<hr />
 
 <table>
   <thead></thead>
@@ -35,9 +40,9 @@
       <td><span>{{user.description}}</span></td>
       <td><button (click)="changeRoleFunc(user)">Edit Role</button></td>
       <td><button (click)="delete(user.id)">Delete</button></td>
-      <!-- <td *ngIf="user.role == 'workman'">
+      <td *ngIf="user.role == 'workman'">
         <button (click)="managerChangeFunc(user.id)">Connect to manager</button>
-      </td> -->
+      </td>
     </tr>
   </tbody>
 </table>
@@ -49,11 +54,14 @@
   <button class="modal__send" (click)="changeRoleFunc()">OK</button>
 </div>
 
-<!-- <div *ngIf="managerConnect" class="modal">
+<div *ngIf="managerConnect" class="modal">
   Выберите менеджера
   <br />
-  <select [(ngModel)]="newManager" class="modal__select">
-    <option *ngFor="let manager of getManagers()">{{user.first_name}} {{user.last_name}}</option>
+  <select [(ngModel)]="newManagerId" class="modal__select">
+    <option value=""></option>
+    <option *ngFor="let manager of getManagers()" value={{manager.id}}>{{manager.first_name}} {{manager.last_name}}</option>
   </select>
   <button class="modal__send" (click)="managerChangeFunc()">OK</button>
-</div> -->
+</div>
+
+<hr />

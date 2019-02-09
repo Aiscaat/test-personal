@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PersonalStoreComponent } from './personal-store/personal-store.component';
 
 const routes: Routes = [
+  { path: '**', pathMatch: 'full', redirectTo: '/personal' },
   { path: 'personal', component: PersonalStoreComponent }
 ];
 
