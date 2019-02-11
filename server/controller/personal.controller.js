@@ -123,7 +123,7 @@ exports.sort = (req, res) => {
    })
 }
 
-exports.getXmlFile = (req, res) => res.sendFile(consts.PERSONAL_XML_FILE_URL);
+exports.getXmlFile = (req, res) => res.download(consts.PERSONAL_XML_FILE_URL);
 
 
 // next 3 func more better U in 1 module sort

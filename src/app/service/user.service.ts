@@ -58,7 +58,7 @@ export class UserService {
    }
 
    private downloadFile(data: any) {
-      let blob = new Blob([data], { type: 'text/xml' }),
+      let blob = new Blob([data.body], { type: 'text/xml' }),
          fileName = 'personal';
       saveAs(blob, fileName);
    }
