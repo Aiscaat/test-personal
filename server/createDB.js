@@ -1,5 +1,6 @@
 const consts = require('./const.config');
 const fs = require('fs');
+const mysql = require('mysql');
 const xml2js = require('xml2js');
 const parser = new xml2js.Parser();
 
@@ -124,5 +125,5 @@ con.connect((err) => {
       })
    });
 
-   console.log('End connect with DB');  
+   console.log('End connect with DB');
 })
