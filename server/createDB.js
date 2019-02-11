@@ -115,7 +115,7 @@ con.connect((err) => {
 
 
             // query to DB
-            con.query(sql, (err, res) => {
+            con.query(result, (err, res) => {
                if (err) throw err;
 
                console.log("add row to DB");
