@@ -1,4 +1,4 @@
-# Start angular project command
+﻿# Start angular project command
 
 Run `npm i`
 Run `ng serve -o`
@@ -14,8 +14,8 @@ Run `npm run start`
 - имя
 - фамилия
 - отчество
-- дата рождения
-- дата принятия на работу
+- дата рождения (mm-dd-yyyy)
+- дата принятия на работу (mm-dd-yyyy)
 - роль на фирме
 - если это рабочий id управляющего им менеджера
 - если это менеджер список id подчинённых через запятую

@@ -5,8 +5,8 @@
     <first_name>Name 11</first_name>
     <last_name>zdftgyh</last_name>
     <father_name>Name 13</father_name>
-    <b_day_date>2.2.1991</b_day_date>
-    <work_start_date>10.4.2010</work_start_date>
+    <b_day_date>2-2-1991</b_day_date>
+    <work_start_date>10-4-2010</work_start_date>
     <role>manager</role>
     <dependentList>3,4,2</dependentList>
   </user>
@@ -15,8 +15,8 @@
     <first_name>Name 21</first_name>
     <last_name>iouyg</last_name>
     <father_name>Name 33</father_name>
-    <b_day_date>3.3.1996</b_day_date>
-    <work_start_date>5.25.2015</work_start_date>
+    <b_day_date>3-3-1996</b_day_date>
+    <work_start_date>5-25-2015</work_start_date>
     <role>workman</role>
     <manager_dependence>1</manager_dependence>
   </user>
@@ -25,8 +25,8 @@
     <first_name>Name 31</first_name>
     <last_name>mmku</last_name>
     <father_name>Name 33</father_name>
-    <b_day_date>4.4.1993</b_day_date>
-    <work_start_date>8.17.2016</work_start_date>
+    <b_day_date>4-4-1993</b_day_date>
+    <work_start_date>8-17-2016</work_start_date>
     <role>workman</role>
     <manager_dependence>1</manager_dependence>
   </user>
@@ -35,8 +35,8 @@
     <first_name>Name 41</first_name>
     <last_name>jhh</last_name>
     <father_name>Name 43</father_name>
-    <b_day_date>5.5.1996</b_day_date>
-    <work_start_date>11.29.2013</work_start_date>
+    <b_day_date>5-5-1996</b_day_date>
+    <work_start_date>11-29-2013</work_start_date>
     <role>workman</role>
     <manager_dependence>1</manager_dependence>
   </user>
@@ -45,8 +45,8 @@
     <first_name>Name 51</first_name>
     <last_name>asd</last_name>
     <father_name>Name 53</father_name>
-    <b_day_date>6.6.1992</b_day_date>
-    <work_start_date>11.11.2014</work_start_date>
+    <b_day_date>6-6-1992</b_day_date>
+    <work_start_date>11-11-2014</work_start_date>
     <role>manager</role>
     <dependentList>7,8</dependentList>
   </user>
@@ -55,8 +55,8 @@
     <first_name>Name 61</first_name>
     <last_name>qwert</last_name>
     <father_name>Name 63</father_name>
-    <b_day_date>7.7.1994</b_day_date>
-    <work_start_date>2.16.2015</work_start_date>
+    <b_day_date>7-7-1994</b_day_date>
+    <work_start_date>2-16-2015</work_start_date>
     <role>workman</role>
     <manager_dependence>5</manager_dependence>
   </user>
@@ -65,8 +65,8 @@
     <first_name>Name 71</first_name>
     <last_name>dfg</last_name>
     <father_name>Name 73</father_name>
-    <b_day_date>8.8.1997</b_day_date>
-    <work_start_date>1.22.2016</work_start_date>
+    <b_day_date>8-8-1997</b_day_date>
+    <work_start_date>1-22-2016</work_start_date>
     <role>workman</role>
     <manager_dependence>5</manager_dependence>
   </user>
@@ -75,8 +75,8 @@
     <first_name>Name 81</first_name>
     <last_name>oiuygb</last_name>
     <father_name>Name 83</father_name>
-    <b_day_date>9.9.1991</b_day_date>
-    <work_start_date>8.18.2012</work_start_date>
+    <b_day_date>9-9-1991</b_day_date>
+    <work_start_date>8-18-2012</work_start_date>
     <role>other</role>
     <description>This is description other user – Name 81</description>
   </user>
@@ -85,8 +85,8 @@
     <first_name>Name 91</first_name>
     <last_name>asd</last_name>
     <father_name>Name 93</father_name>
-    <b_day_date>0.10.1992</b_day_date>
-    <work_start_date>12.15.2013</work_start_date>
+    <b_day_date>0-10-1992</b_day_date>
+    <work_start_date>12-15-2013</work_start_date>
     <role>other</role>
     <description>This is description other user – Name 91</description>
   </user>
@@ -95,8 +95,8 @@
     <first_name>Name 101</first_name>
     <last_name>bgh</last_name>
     <father_name>Name 103</father_name>
-    <b_day_date>1.11.1993</b_day_date>
-    <work_start_date>11.4.2013</work_start_date>
+    <b_day_date>1-11-1993</b_day_date>
+    <work_start_date>11-4-2013</work_start_date>
     <role>other</role>
     <description>This is description other user – Name 101</description>
   </user>
@@ -105,8 +105,8 @@
     <first_name>Name 111</first_name>
     <last_name>njhbgfr</last_name>
     <father_name>Name 113</father_name>
-    <b_day_date>1.12.1994</b_day_date>
-    <work_start_date>11.19.2012</work_start_date>
+    <b_day_date>1-12-1994</b_day_date>
+    <work_start_date>11-19-2012</work_start_date>
     <role>other</role>
     <description>This is description other user – Name 111</description>
   </user>
